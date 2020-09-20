@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
+import { Button } from 'react-native-elements';
 import {
   StyleSheet,
   Text,
   View,
   Platform,
-  TouchableHighlight,
   Animated,
   Easing,
 } from 'react-native';
@@ -48,12 +48,12 @@ class App extends Component {
             Shake your phone to open the developer menu.
           </Text>
         )}
-        <TouchableHighlight
+        <Button
           onPress={this.onClick}
           style={styles.button}
-          underlayColor={'#0A84D0'}>
-          <Text style={styles.buttonText}>Rotate Logo</Text>
-        </TouchableHighlight>
+          underlayColor={'#0A84D0'}
+          title='Rotate Logo'
+        />
       </View>
     );
   }
