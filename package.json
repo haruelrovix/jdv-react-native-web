@@ -60,6 +60,8 @@
     "react-dev-utils": "^10.2.0",
     "react-dom": "^16.13.0",
     "react-native": "0.61.5",
+    "react-native-elements": "^2.3.2",
+    "react-native-vector-icons": "^7.1.0",
     "react-native-web": "^0.12.2",
     "resolve": "1.15.0",
     "resolve-url-loader": "3.1.1",
