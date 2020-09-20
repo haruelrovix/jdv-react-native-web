@@ -1,6 +1,6 @@
 import React from 'react';
 import { ActivityIndicator, Dimensions, FlatList, View } from 'react-native';
-import { Avatar, ListItem } from 'react-native-elements';
+import { Avatar, ListItem, Text } from 'react-native-elements';
 import { compose } from 'redux';
 import fetch from 'fetch-hoc';
 
@@ -52,6 +52,12 @@ class CommitList extends React.PureComponent {
   renderContent = () => (
     this.props.loading ?
       <ActivityIndicator color='#87ceeb' /> :
+      this.renderFlatList()
+  )
+
+  renderFlatList = () => (
+    this.props.error ?
+      <Text h4>Error: {this.props.data.message || 'Something went wrong 😕'}</Text> :
       <FlatList
         keyExtractor={this.keyExtractor}
         data={this.props.data}
