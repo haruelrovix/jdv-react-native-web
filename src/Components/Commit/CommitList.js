@@ -1,3 +1,5 @@
+import { compose } from 'redux';
+import fetch from 'fetch-hoc';
 import React from 'react';
 import { Text, View } from 'react-native';
 
@@ -10,4 +12,7 @@ const CommitList = () => (
   </View>
 );
 
-export default withHeader({ title: 'Commits' })(CommitList);
+export default compose(
+  withHeader({ title: 'Commits' }),
+  fetch('https://api.github.com/repos/react-native-training/react-native-elements/commits')
+)(CommitList);
