@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActivityIndicator, Dimensions, FlatList, Platform, Text, View } from 'react-native';
+import { ActivityIndicator, Dimensions, FlatList, View } from 'react-native';
 import { Avatar, ListItem } from 'react-native-elements';
 import { compose } from 'redux';
 import fetch from 'fetch-hoc';
@@ -8,6 +8,7 @@ import { colors } from 'react-native-elements';
 
 import styles from '../Shared.style';
 import withHeader from '../../HOCs/withHeader';
+import { withRouter } from '../../Utils/Routing';
 
 const containerStyle = {
   alignItems: 'flex-start',
@@ -69,5 +70,8 @@ class CommitList extends React.PureComponent {
 
 export default compose(
   withHeader({ title: 'Commits' }),
-  fetch('https://api.github.com/repos/react-native-training/react-native-elements/commits')
+  withRouter,
+  fetch(({ location: { state = {} } }) => (
+    `https://api.github.com/repos/${state.owner}/${state.repo}/commits`
+  ))
 )(CommitList);
